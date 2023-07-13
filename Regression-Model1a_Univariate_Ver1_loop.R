@@ -22,115 +22,25 @@ head(gtex_df)
 
 
 
-# univariate regressions (not looped) ------------------------------------------------------
-
-
-target_exp <- gtex_df["COL2A1",]
-target_exp <- t(target_exp) #turn into column vector
-target_exp
-
-tf_exp <- gtex_df["SOX9",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["KLF4",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["ARID5B",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["SOX5",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["SOX6",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["NKX3-2",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["PAX9",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["NFATC1",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["SP1",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
-
-
-tf_exp <- gtex_df["SP3",]
-tf_exp <- t(tf_exp)
-tf_exp
-
-lm_target = lm(tf_exp~target_exp)
-summary(lm_target)
-plot(lm_target$model)
-
+# # univariate regressions (not looped) ------------------------------------------------------
+# 
+# 
+# target_exp <- gtex_df["COL2A1",]
+# target_exp <- t(target_exp) #turn into column vector
+# target_exp
+# 
+# tf_exp <- gtex_df["SOX9",]
+# tf_exp <- t(tf_exp)
+# tf_exp
+# 
+# lm_target = lm(tf_exp~target_exp)
+# summary(lm_target)
+# plot(lm_target$model)
 
 
 # univariate regression (loop) --------------------------------------------
 
+# add documentation
 
 target_exp <- gtex_df["COL2A1",]
 target_exp <- t(target_exp)
@@ -138,11 +48,7 @@ target_exp
 
 tf_list <- c("SOX9", "KLF4", "ARID5B", "SOX5", "SOX6",
                "NKX3-2", "PAX9", "NFATC1", "SP1", "SP3")
-lm_uni_tf_list=list()
-
-
-tf_exp <- gtex_df["SOX9",]
-tf_exp
+lm_uni_tf_list <- list()
 
 
 for (i in tf_list){
@@ -150,7 +56,7 @@ for (i in tf_list){
   tf_exp <- t(tf_exp)
   print(tf_exp)
   
-  lm_uni_tf_list[[i]] = lm(tf_exp~target_exp)
+  lm_uni_tf_list[[i]] <-  lm(tf_exp~target_exp)
   summary(lm_uni_tf_list[i])
   
   pdf(file = paste0("./output/",i,"rm.pdf"),width=7,height=7)
